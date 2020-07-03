@@ -127,6 +127,12 @@ spec:
           - name: "CONFIG_whisk_containerFactory_containerArgs_extraEnvVars_0"
             value: "__OW_ALLOW_CONCURRENT={{ .Values.invoker.containerFactory.enableConcurrency }}"
 
+          # load custom environment variables
+  {{- range $index, $element := .Values.invoker.env }}
+          - name: "CONFIG_whisk_containerFactory_containerArgs_extraEnvVars_1{{ $index }}"
+            value: "{{ .name }}={{ .value }}"
+  {{- end }}
+
           - name: "CONFIG_whisk_containerFactory_runtimesRegistry_url"
             value: "{{ .Values.docker.registry.name }}"
 

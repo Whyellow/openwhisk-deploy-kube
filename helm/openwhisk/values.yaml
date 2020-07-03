@@ -262,6 +262,9 @@ invoker:
   options: ""
   jvmHeapMB: "512"
   jvmOptions: ""
+  env: 
+    - name: ""
+      value: ""
   containerFactory:
     useRunc: false
     impl: "kubernetes"
